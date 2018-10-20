@@ -10,7 +10,20 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      // '/api/getDiscList': {
+      //   target: 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg',
+      //   bypass: function (req, res, proxyOptions) {
+      //     req.headers.referer = 'https://c.y.qq.com';
+      //     req.headers.host = 'c.y.qq.com';
+      //   },
+      //   secure: false, //如果是https接口，需要配置这个参数
+      //   changeOrigin: true, //允许跨域
+      //   pathRewrite: {
+      //     '^/api/getPlaylist': ''
+      //   }
+      // }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
