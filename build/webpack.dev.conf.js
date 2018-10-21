@@ -33,19 +33,33 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   devServer: {
     before(app) {
       app.get('/api/getDiscList', function (req, res) {
-        const url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'
-        axios.get(url, {
-          headers: {
-            referer: 'https://y.qq.com',
-            authority: 'c.y.qq.com'
-          },
-          params: req.query
-        }).then((response) => {
-          res.json(response.data)
-        }).catch((e) => {
-          console.log(e)
+          const url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'
+          axios.get(url, {
+            headers: {
+              referer: 'https://c.y.qq.com',
+              authority: 'c.y.qq.com'
+            },
+            params: req.query
+          }).then((response) => {
+            res.json(response.data)
+          }).catch((e) => {
+            console.log(e)
+          })
+        }),
+        app.get('/api/getSingerList', function (req, res) {
+          const url = 'https://c.y.qq.com/v8/fcg-bin/v8.fcg'
+          axios.get(url, {
+            headers: {
+              referer: 'https://c.y.qq.com/',
+              authority: 'c.y.qq.com'
+            },
+            params: req.query
+          }).then((response) => {
+            res.json(response.data)
+          }).catch((e) => {
+            console.log(e)
+          })
         })
-      })
     },
     clientLogLevel: 'warning',
     historyApiFallback: {
